@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  infoButton: {
+    paddingRight: '8%',
+  },
 });
 
 class HomeScreen extends Component<Props> {
@@ -49,11 +52,13 @@ class HomeScreen extends Component<Props> {
       fontWeight: 'bold',
     },
     headerRight: () => (
-      <Button
-        onPress={() => Alert.alert('This is a button!')}
-        title="Info"
-        color="#fff"
-      />
+      <View style={styles.infoButton}>
+        <Button
+          onPress={() => Alert.alert('This is a button!')}
+          title="Info  "
+          color="#fff"
+        />
+      </View>
     ),
   };
 

@@ -10,6 +10,7 @@ import {
   View,
   InputAccessoryView,
   Keyboard,
+  YellowBox,
 } from 'react-native';
 import Svg from 'react-native-svg';
 import RoundedRect from './Components/RoundedRect';
@@ -25,6 +26,10 @@ type State = {
   fill: string,
   strokeWidth: number,
 };
+
+YellowBox.ignoreWarnings([
+  'RCTRootView cancelTouches', // https://github.com/kmagiera/react-native-gesture-handler/issues/746
+]);
 
 const styles = StyleSheet.create({
   testingContainer: {
@@ -68,6 +73,7 @@ class RoundedRectScreen extends Component<Props, State> {
       strokeWidth: 0,
     };
   }
+  static navigationOptions = {title: 'Rectangle Testing'};
   render() {
     const accessoryID = '001';
     return (
