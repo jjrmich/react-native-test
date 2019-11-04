@@ -3,7 +3,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './js/HomeScreen';
 import DetailsScreen from './js/DetailsScreen';
 
-const AppNavigator = createStackNavigator(
+const Navigator = createStackNavigator(
   {
     Home: HomeScreen,
     Details: DetailsScreen,
@@ -23,4 +23,4 @@ const AppNavigator = createStackNavigator(
   },
 );
 
-export default createAppContainer(AppNavigator);
+export default createAppContainer(Navigator);

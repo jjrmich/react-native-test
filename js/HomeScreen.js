@@ -59,20 +59,18 @@ class HomeScreen extends Component<Props> {
 
   render() {
     return (
-      <>
-        <View style={styles.helloWorldContainer}>
-          <Text>Home Screen</Text>
-          <Button
-            title="Go to Details"
-            onPress={() => {
-              this.props.navigation.navigate('Details', {
-                itemId: 86,
-                otherParam: 'Additional Data',
-              });
-            }}
-          />
-        </View>
-      </>
+      <View style={styles.helloWorldContainer}>
+        <Text>Home Screen</Text>
+        <Button
+          title="Go to Details"
+          onPress={() => {
+            this.props.navigation.navigate('Details', {
+              itemId: 86,
+              otherParam: 'Additional Data',
+            });
+          }}
+        />
+      </View>
     );
   }
 }
