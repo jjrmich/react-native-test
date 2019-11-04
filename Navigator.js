@@ -1,12 +1,16 @@
+//@flow
+
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from './js/HomeScreen';
 import DetailsScreen from './js/DetailsScreen';
+import RoundedRectScreen from './js/RoundedRectScreen';
 
 const Navigator = createStackNavigator(
   {
     Home: HomeScreen,
     Details: DetailsScreen,
+    RoundedRect: RoundedRectScreen,
   },
   {
     initialRouteName: 'Home',

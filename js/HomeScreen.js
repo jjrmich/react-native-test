@@ -70,6 +70,12 @@ class HomeScreen extends Component<Props> {
             });
           }}
         />
+        <Button
+          title="Go to Rounded Rectangle Testing"
+          onPress={() => {
+            this.props.navigation.navigate('RoundedRect');
+          }}
+        />
       </View>
     );
   }
