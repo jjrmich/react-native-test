@@ -1,20 +1,14 @@
 //@flow
 
 import React, {Component} from 'react';
-import {
-  // Platform,
-  StyleSheet,
-  StatusBar,
-  Button,
-  Text,
-  View,
-} from 'react-native';
+import {Platform, StyleSheet, StatusBar, Text, View} from 'react-native';
+import NewButton from './Components/NewButton';
 
 type Props = {
   navigation: Object,
 };
 
-// const isAndroid = Platform.OS === 'android';
+const isAndroid = Platform.OS === 'android';
 
 const styles = StyleSheet.create({
   detailsContainer: {
@@ -25,18 +19,18 @@ const styles = StyleSheet.create({
 });
 
 class DetailsScreen extends Component<Props> {
-  // _navListener: Function;
+  _navListener: Function;
 
-  // componentDidMount() {
-  //   this._navListener = this.props.navigation.addListener('didFocus', () => {
-  //     StatusBar.setBarStyle('dark-content');
-  //     isAndroid && StatusBar.setBackgroundColor('#ecf0f1');
-  //   });
-  // }
+  componentDidMount() {
+    this._navListener = this.props.navigation.addListener('willFocus', () => {
+      StatusBar.setBarStyle('dark-content');
+      isAndroid && StatusBar.setBackgroundColor('#ecf0f1');
+    });
+  }
 
-  // componentWillUnmount() {
-  //   this._navListener.remove();
-  // }
+  componentWillUnmount() {
+    this._navListener.remove();
+  }
 
   static navigationOptions = ({navigation}: Object) => {
     return {
@@ -61,7 +55,7 @@ class DetailsScreen extends Component<Props> {
           </Text>
           {/* Notice this uses .push instead of .navigate, since .navigate won't
               allow us to go to the page we're already on */}
-          <Button
+          <NewButton
             title="Go to Details... again"
             onPress={() =>
               navigation.push('Details', {
@@ -72,13 +66,13 @@ class DetailsScreen extends Component<Props> {
 
           {/* .popToTop() would work identically, targeting the first screen
               in a stack */}
-          <Button
+          <NewButton
             title="Go to Home"
             onPress={() => navigation.navigate('Home')}
           />
 
-          <Button title="Go back" onPress={() => navigation.goBack()} />
-          <Button
+          <NewButton title="Go back" onPress={() => navigation.goBack()} />
+          <NewButton
             title="Update the title"
             onPress={() =>
               this.props.navigation.setParams({otherParam: 'Updated!'})

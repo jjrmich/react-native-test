@@ -2,6 +2,7 @@
 
 import React, {Component} from 'react';
 import {
+  Platform,
   TextInput,
   StyleSheet,
   StatusBar,
@@ -30,6 +31,8 @@ type State = {
 YellowBox.ignoreWarnings([
   'RCTRootView cancelTouches', // https://github.com/kmagiera/react-native-gesture-handler/issues/746
 ]);
+
+const isAndroid = Platform.OS === 'android';
 
 const styles = StyleSheet.create({
   testingContainer: {
@@ -73,7 +76,21 @@ class RoundedRectScreen extends Component<Props, State> {
       strokeWidth: 0,
     };
   }
+
   static navigationOptions = {title: 'Rectangle Testing'};
+
+  doneButtonRender(id: string) {
+    if (!isAndroid) {
+      return (
+        <InputAccessoryView nativeID={id}>
+          <View style={styles.accessoryStyle}>
+            <Button onPress={() => Keyboard.dismiss()} title="Done" />
+          </View>
+        </InputAccessoryView>
+      );
+    }
+  }
+
   render() {
     const accessoryID = '001';
     return (
@@ -150,11 +167,7 @@ class RoundedRectScreen extends Component<Props, State> {
             </Svg>
           </View>
         </View>
-        <InputAccessoryView nativeID={accessoryID}>
-          <View style={styles.accessoryStyle}>
-            <Button onPress={() => Keyboard.dismiss()} title="Done" />
-          </View>
-        </InputAccessoryView>
+        {this.doneButtonRender(accessoryID)}
       </>
     );
   }

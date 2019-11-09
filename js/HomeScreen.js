@@ -5,11 +5,13 @@ import {
   Platform,
   StyleSheet,
   StatusBar,
-  Button,
+  // Button,
   Text,
   View,
   Alert,
 } from 'react-native';
+
+import NewButton from './Components/NewButton';
 
 type Props = {
   navigation: Object,
@@ -23,6 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonWrapper: {},
   infoButton: {
     paddingRight: '8%',
   },
@@ -51,22 +54,26 @@ class HomeScreen extends Component<Props> {
     headerTitleStyle: {
       fontWeight: 'bold',
     },
-    headerRight: () => (
-      <View style={styles.infoButton}>
-        <Button
-          onPress={() => Alert.alert('This is a button!')}
-          title="Info  "
-          color="#fff"
-        />
-      </View>
-    ),
+    headerRight: () => {
+      if (!isAndroid) {
+        return (
+          <View style={styles.infoButton}>
+            <NewButton
+              onPress={() => Alert.alert('This is a button!')}
+              title="Info  "
+              color="#fff"
+            />
+          </View>
+        );
+      }
+    },
   };
 
   render() {
     return (
       <View style={styles.helloWorldContainer}>
         <Text>Home Screen</Text>
-        <Button
+        <NewButton
           title="Go to Details"
           onPress={() => {
             this.props.navigation.navigate('Details', {
@@ -75,7 +82,7 @@ class HomeScreen extends Component<Props> {
             });
           }}
         />
-        <Button
+        <NewButton
           title="Go to Rounded Rectangle Testing"
           onPress={() => {
             this.props.navigation.navigate('RoundedRect');
