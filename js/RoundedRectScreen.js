@@ -14,7 +14,8 @@ import {
   YellowBox,
 } from 'react-native';
 import Svg from 'react-native-svg';
-import RoundedRect from './Components/RoundedRect';
+// import RoundedRect from './Components/RoundedRect';
+import {RoundedRect} from '@jjrmich/rounded-rectangle';
 
 type Props = {};
 type State = {
